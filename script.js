@@ -1,3 +1,12 @@
+function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+
 function checkNumber(){
 	if(document.getElementById("inputBox").value){
 		if(isPrime(document.getElementById("inputBox").value)){
@@ -11,16 +20,8 @@ function checkNumber(){
 }
 
 const isPrime = num => {
+    if(num == 0) return false; 
     for(let i = 2, s = Math.sqrt(num); i <= s; i++)
         if(num % i === 0) return false; 
     return num !== 1;
-}
-
-// Listen for input event on numInput.
-document.getElementById("inputBox").oninput = function(e) {
-    if(!((e.keyCode > 95 && e.keyCode < 106)
-      || (e.keyCode > 47 && e.keyCode < 58) 
-      || e.keyCode == 8)) {
-        return false;
-    }
 }
